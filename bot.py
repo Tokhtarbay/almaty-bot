@@ -1,7 +1,23 @@
 import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+import os
+from threading import Thread
+from flask import Flask
 
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Бот жұмыс істеп тұр!"
+
+def run():
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host='0.0.0.0', port=port)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
 # ===== ТОКЕНДІ ҚОЙЫҢЫЗ =====
 TOKEN = "8145235496:AAEmVo271zNlbOVyoRlgb1I9QkmOWrxMBVw"
 
@@ -369,3 +385,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    keep_alive()
