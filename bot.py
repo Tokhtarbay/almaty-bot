@@ -384,5 +384,5 @@ def main():
     app.run_polling()
 
 if __name__ == "__main__":
-    main()
-    keep_alive()
+    keep_alive()  # БІРІНШІ веб-серверді фондық режимде қосамыз
+    main()        # СОСЫН БАРЫП ботты іске қосамыз
